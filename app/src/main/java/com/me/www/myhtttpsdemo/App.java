@@ -17,13 +17,13 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        OkHttpUtil.getInstance().getOkHttpClient();
-        try {
-            OkHttpUtil.getInstance().setCertificates(getAssets().open("bailitopedu.cer"));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("App.........e = " + e);
-        }
+//        OkHttpUtil.getInstance().getOkHttpClient();
+//        try {
+//            OkHttpUtil.getInstance().setCertificates(getAssets().open("bailitopedu.cer"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            System.out.println("App.........e = " + e);
+//        }
 
     }
 }

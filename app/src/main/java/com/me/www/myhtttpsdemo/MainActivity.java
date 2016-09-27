@@ -2,6 +2,7 @@ package com.me.www.myhtttpsdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -23,7 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.tv_content);
 
-        initData();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("new Thread(new Runnable(...............");
+//                initData();
+            }
+        });
 
     }
 
@@ -32,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         OkHttpClient client = OkHttpUtil.getInstance().getOkHttpClient();
 
         final Request request = new Request.Builder()
-                .url("https://api.bailitop.edu/test.php")
+//                .url("https://api.bailitop.edu/test.php")
+                .url("https://www.baidu.com")
                 .build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
@@ -52,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             try {
                                 textView.setText(response.body().string());
                                 System.out.println(response.body().string());
+                                Log.e("MyHTTPSDemo...response",response.body().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
